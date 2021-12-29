@@ -9,10 +9,4 @@ export const pagination = () => {
         }
     })
 }
-/*
-let i;
-    for(i=1; i<10; i++){
-      cy.get('li').contains(i).click();
-    }
-    cy.get('li').contains('1').click();
-}*/
+

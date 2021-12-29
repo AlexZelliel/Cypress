@@ -3,5 +3,5 @@ export const login = () => {
     cy.get('[id="email"]').type('alexgmirko@gmail.com');
     cy.get('[id="password"]').type('mak63nil');
     cy.get('[type="submit"]').click();
-cy.wait(3000);
+    cy.wait(3000);
 }
