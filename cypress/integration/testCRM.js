@@ -5,9 +5,10 @@ import {transminus} from "./-Trans";
 import {deleteTrans} from "./deleteTrans";
 import {editTrans} from "./editTrans";
 import {search} from "./search";
+import {reqGet} from "./requestGET";
+import {reqPost} from "./requestPost";
 
 export const rub = Math.random().toString(36).substring(7);
-
 
 describe('Testing login ', () => {
     it('visit site ', function () {
@@ -16,18 +17,16 @@ describe('Testing login ', () => {
         cy.intercept('GET', '/transactions/*').as('flagLogin');
         login();
         cy.wait('@flagLogin', {timeout: 2000})
-
     })
-
     it('login user and new trans',  () => {
-        cy.intercept('GET', '/transactions/*').as('flagLogin');
+        cy.intercept('GET', '/transactions/!*').as('flagLogin');
         transplus();
         cy.intercept('GET', '/transactions/!*').as('flag');
     })
     it ( 'add and delete different trans', function (){
         cy.viewport(1400, 900);
         out();
-        cy.intercept('GET', '/transactions/*').as('flagLogin');
+        cy.intercept('GET', '/transactions/!*').as('flagLogin');
         login();
         cy.wait('@flagLogin');
         transplus();
@@ -36,9 +35,8 @@ describe('Testing login ', () => {
         editTrans();
         deleteTrans();
         deleteTrans();
-        deleteTrans();
-
-
-
+        out();
+        reqGet();
+        reqPost();
     })
 })
